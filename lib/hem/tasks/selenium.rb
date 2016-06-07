@@ -1,5 +1,7 @@
 desc 'Selenium tasks'
 namespace :selenium do
+  require_relative 'selenium/chromedriver'
+
   desc 'Install Selenium'
   task :install do
     cmd = [
