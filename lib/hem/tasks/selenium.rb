@@ -1,16 +1,7 @@
 desc 'Selenium tasks'
 namespace :selenium do
   require_relative 'selenium/chromedriver'
-
-  desc 'Install Selenium'
-  task :install do
-    cmd = [
-      "test -f ./bin/selenium-server-standalone.jar",
-      "|| wget '#{Hem.project_config.selenium.download}' --output-document ./bin/selenium-server-standalone.jar"
-    ].join(' ')
-    run_command cmd
-    Hem.ui.success('Selenium Installed.')
-  end
+  require_relative 'selenium/install'
 
   desc 'Start Selenium'
   task :start do
