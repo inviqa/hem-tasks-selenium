@@ -1,7 +1,24 @@
-# hem-tasks-selenium
+# Selenium Forwarding
 
+Visualise the steps of your Behat features directly on your __host__ browser.
 
-## Hem config
+## Supported Browsers
+
+* Firefox
+* Chrome
+
+## Installation
+
+Add the following code to your `Hemfile`:
+
+    plugins do
+      source 'https://rubygems.org'
+      gem 'hem-tasks-selenium'
+    end
+
+### Configuration
+
+#### Hem config
 Update `tools/hem/config.yaml` with the following settings:
 
     :selenium:
@@ -20,10 +37,17 @@ Example:
         :mac: http://chromedriver.storage.googleapis.com/2.21/chromedriver_mac32.zip
         :linux: http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip
 
-## Behat config
-Update `behat.yaml` with a `Firefox` and a `Chrome` profile:
+##### Versions
 
-Example (configs will vary):
+* Latest Selenium standalone servers:
+    http://selenium-release.storage.googleapis.com/index.html
+* Latest Chromedrivers:
+    http://chromedriver.storage.googleapis.com/index.html
+
+#### Behat config
+Update `behat.yaml` with a `Firefox` and `Chrome` profile.
+
+Examples (configs will vary):
 
     chrome:
       extensions:
@@ -46,3 +70,10 @@ Example (configs will vary):
             browser: firefox
           show_cmd: echo '%s'
           show_tmp_dir: /vagrant
+
+## Usage
+
+1. Run `hem selenium forward`.
+    * __Selenium__ and __Chromedriver__ will be downloaded & installed automatically.
+2. Run `bin/behat -p firefox` or `bin/behat -p chrome`. 
+    * Each step of a feature will now be visualised through your host `Firefox` or `Chrome` browser.
