@@ -2,8 +2,8 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'hem/tasks/selenium/version'
-require 'hem/url';
+require 'hem/tasks/selenium/version';
+require 'hem/lib/url';
 
 Gem::Specification.new do |spec|
   spec.name          = "hem-tasks-selenium"
