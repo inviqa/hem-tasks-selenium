@@ -3,16 +3,18 @@ namespace :selenium do
   require_relative 'selenium/chromedriver'
   require_relative 'selenium/geckodriver'
   require_relative 'selenium/install'
+  require 'hem/lib/selenium/jar'
 
   desc 'Start Selenium'
   task :start do
+    jarPath = Hem::Selenium::Jar::getLocalPath();
     cmd  = [
       'export NSPR_LOG_MODULES=all:3;',
-      "java -jar './bin/selenium-server-standalone.jar'",
+      'java ',
         '-Dwebdriver.firefox.logfile=/tmp/selenium-firefox.log',
         '-Dwebdriver.chrome.driver=./bin/chromedriver',
         '-Dwebdriver.gecko.driver=./bin/geckodriver',
-        '-trustAllSSLCertificates',
+        "-jar '#{jarPath}'",
         '> /tmp/selenium-general.log 2>&1 &',
         'echo $! > /tmp/selenium.pid'
     ].join(' ')
