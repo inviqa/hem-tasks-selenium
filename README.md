@@ -16,6 +16,13 @@ Add the following code to your `Hemfile`:
       gem 'hem-tasks-selenium'
     end
 
+and if you want to use the latest development version:
+
+    plugins do
+      source 'https://rubygems.org'
+      gem 'hem-tasks-selenium', git: 'https://github.com/inviqa/hem-tasks-selenium.git'
+    end
+
 ### Configuration
 
 #### Hem config

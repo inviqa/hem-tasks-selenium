@@ -1,6 +1,7 @@
 desc 'Install Selenium'
 task :install do
-  require 'hem/lib/selenium/jar';
+  require 'hem/lib/selenium/jar'
+  require 'hem/lib/url'
 
   downloadUrl = Hem::Selenium::Jar.getDownloadUrl();
   jarPath = Hem::Selenium::Jar::getLocalPath();
