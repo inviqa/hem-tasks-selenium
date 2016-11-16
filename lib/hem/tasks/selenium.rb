@@ -1,6 +1,7 @@
 desc 'Selenium tasks'
 namespace :selenium do
   require_relative 'selenium/chromedriver'
+  require_relative 'selenium/geckodriver'
   require_relative 'selenium/install'
 
   desc 'Start Selenium'
@@ -10,6 +11,7 @@ namespace :selenium do
       "java -jar './bin/selenium-server-standalone.jar'",
         '-Dwebdriver.firefox.logfile=/tmp/selenium-firefox.log',
         '-Dwebdriver.chrome.driver=./bin/chromedriver',
+        '-Dwebdriver.gecko.driver=./bin/geckodriver',
         '-trustAllSSLCertificates',
         '> /tmp/selenium-general.log 2>&1 &',
         'echo $! > /tmp/selenium.pid'
@@ -44,6 +46,7 @@ namespace :selenium do
 
     Rake::Task['selenium:install'].invoke
     Rake::Task['selenium:chromedriver:install'].invoke
+    Rake::Task['selenium:geckodriver:install'].invoke
     Rake::Task['selenium:start'].invoke
 
     Hem.ui.success('Selenium connection forwarded into VM.')
